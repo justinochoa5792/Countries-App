@@ -14,13 +14,13 @@ const Search = () => {
     setCountry(response.data);
   }
   function handleChange(e) {
-    console.log(e.target.value);
     setTerm(e.target.value);
   }
 
   function handleSumbit(e) {
     e.preventDefault();
     getCountries();
+    setTerm(null);
   }
   return (
     <div className="form">
@@ -34,7 +34,7 @@ const Search = () => {
       </form>
       {country.map((Country) => {
         return (
-          <ul>
+          <ul key={Country.name}>
             <img
               src={Country.flag}
               style={{ height: "50px", width: "80px" }}
